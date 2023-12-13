@@ -2,35 +2,34 @@ from keras.datasets import mnist
 from keras import models
 from keras import layers
 from keras.utils import to_categorical
+from keras.callbacks import EarlyStopping
 import matplotlib.pyplot as plt
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-print('Training samples shape:', x_train.shape)
-print('Number of training labels:', len(y_train))
-print('Training labels:', y_train)
-print('\nTest samples shape:', x_test.shape)
-print('Number of test labels:', len(y_test))
-print('Test labels:', y_test, '\n')
+x_train= x_train.reshape((60000, 28, 28, 1)).astype('float32') / 255
+x_test= x_test.reshape((10000, 28, 28, 1)).astype('float32') / 255
+
+y_train= to_categorical(y_train)
+y_test= to_categorical(y_test)
 
 network= models.Sequential()
-network.add(layers.Dense(units=256, activation='relu', input_shape=(28 * 28,)))
-network.add(layers.Dense(units=64, activation='relu'))
-network.add(layers.Dense(units=10, activation= 'softmax'))
+network.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+network.add(layers.MaxPooling2D(2, 2))
+network.add(layers.Flatten())
+network.add(layers.Dense(units=128, activation='relu'))
+network.add(layers.Dropout(0.3))
+network.add(layers.Dense(units=10, activation='softmax'))
 
 network.compile(optimizer='adam',
                 loss='categorical_crossentropy',
                 metrics=['accuracy'])
 
-x_train= x_train.reshape((60000, 28 * 28))
-x_train= x_train.astype('float32') / 255
-x_test= x_test.reshape((10000, 28 * 28))
-x_test= x_test.astype('float32') / 255
+#network.save('mnist_model5.h5')
 
-y_train= to_categorical(y_train)
-y_test= to_categorical(y_test)
+early_stopping = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
 
-history= network.fit(x_train, y_train, epochs=5, batch_size=128, validation_data=(x_test, y_test), verbose=1)
+history= network.fit(x_train, y_train, epochs=5, batch_size=128, validation_data=(x_test, y_test), callbacks=[early_stopping])
 
 train_loss = history.history['loss']
 train_acc = history.history['accuracy']
