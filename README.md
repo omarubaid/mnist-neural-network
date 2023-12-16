@@ -1,5 +1,5 @@
 # MNIST Digit Classification with Keras
-MNIST neural network implementation, training, and evaluation.
+MNIST neural network implementation, training, evaluation, and prediction.
 
 ## Overview
 
@@ -37,38 +37,39 @@ pip install keras matplotlib numpy pillow
 
 ## File Descriptions
 
-    mnist_model.h5: The saved Keras model file after training.
-    handwritten_digit.png: Example image for making predictions.
+    mnist_model5.h5: The saved Keras model file after training.
+    handwritten_digit.png: Example image for making prediction of the digit in the image.
 
 ## Visualizing Results
 
 Use the Jupyter Notebook file visualize_results.ipynb to visualize training and validation loss/accuracy over epochs.
-Acknowledgments
+### Training and Validation Loss
+
+![Screenshot from 2023-12-16 21-58-49](https://github.com/omarubaid/mnist-neural-network/assets/142675270/77a35d3d-3150-4b91-bea5-3ac29102ec0b)
+
+### Training and Validation Accuracy
+
+![Screenshot from 2023-12-16 21-59-06](https://github.com/omarubaid/mnist-neural-network/assets/142675270/6675e9c6-d0fd-4695-945e-caa34b8a9735)
+
+
+
+## Acknowledgments
 
     The MNIST dataset is used for training the model.
 
 ## Project Notes
 
-While the project successfully demonstrates handwritten digit recognition, it's important to note potential areas for improvement:
+While the project successfully demonstrates handwritten digit recognition, it's important to note potential area for improvement:
 
 ### Model Predictions
 
 The model's predictions are functional but may not be optimal in all cases. If you encounter instances of incorrect predictions, consider the following:
 
-1. **Image Pre-processing:** Ensure input images conform to the specified dimensions (28x28 pixels) and are in grayscale. Experiment with different pre-processing techniques, including color inversion, for potential improvements.
+   **Image Pre-processing:** Ensure input images conform to the specified dimensions (28x28 pixels) and are in grayscale. Experiment with different pre-processing techniques, including color inversion, for potential improvements.
 
-    Example pre-processing steps:
 
-    ```python
-    # Your image pre-processing code here
-    ```
 
-2. **Model Fine-tuning:** Explore opportunities for fine-tuning the model architecture, hyperparameters, or consider incorporating additional diverse data for improved generalization.
-
-3. **Acknowledgment:** Recognizing these considerations, the project serves as a foundation for ongoing learning and optimization.
-
-This documentation aims to provide transparency and encourages further exploration and refinement of the model for enhanced performance.
-
+   
 
 
 
