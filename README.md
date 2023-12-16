@@ -1,5 +1,5 @@
 # MNIST Digit Classification with Keras
-MNIST neural network implementation, training, evaluation, and prediction.
+MNIST ConvNet implementation, training, evaluation, and prediction.
 
 ## Overview
 
@@ -27,37 +27,40 @@ pip install keras matplotlib numpy pillow
 ## Usage
 ### Training the Model
 
-    Run mnist_cnn_with_dropout.py to train the CNN on the MNIST dataset and the graph curves for loss and accuracy are plotted.
-    The trained model will be saved as 'mnist_model5.h5'.
+Run mnist_cnn_with_dropout.py to train the CNN on the MNIST dataset and the graph curves for loss and accuracy will be plotted. The trained model will be saved as 'mnist_model5.h5'.
 
 ### Making Predictions
 
-    Provide your handwritten digit image in the image_path variable in loaded_mnist_model_digit_predictor.py.
-    Run predict_digit.py to load the trained model and make predictions on the provided image.
+Provide your handwritten digit image in the image_path variable in loaded_mnist_model_digit_predictor.py. Run predict_digit.py to load the trained model and make predictions on the provided image.
+
 
 ## File Descriptions
 
-    mnist_model5.h5: The saved Keras model file after training.
-    handwritten_digit.png: Example image for making prediction of the digit in the image.
+mnist_model5.h5: The saved Keras model file after training.
+handwritten_digit.png: Example image for making prediction of the digit in the image.
+
 
 ## Visualizing Results
 
-Use the Jupyter Notebook file visualize_results.ipynb to visualize training and validation loss/accuracy over epochs.
-### Training and Validation Loss
 
-![Screenshot from 2023-12-16 21-58-49](https://github.com/omarubaid/mnist-neural-network/assets/142675270/77a35d3d-3150-4b91-bea5-3ac29102ec0b)
 
-### Training and Validation Accuracy
+![Screenshot from 2023-12-16 21-58-49](https://github.com/omarubaid/mnist-neural-network/assets/142675270/77a35d3d-3150-4b91-bea5-3ac29102ec0b) 
+
+------
 
 ![Screenshot from 2023-12-16 21-59-06](https://github.com/omarubaid/mnist-neural-network/assets/142675270/6675e9c6-d0fd-4695-945e-caa34b8a9735)
 
 
 
-## Acknowledgments
 
-    The MNIST dataset is used for training the model.
 
-## Project Notes
+
+## Acknowledgment
+
+This project utilizes the MNIST dataset provided by the Keras datasets module for training the model.
+
+
+## Project Considerations
 
 While the project successfully demonstrates handwritten digit recognition, it's important to note potential area for improvement:
 
@@ -66,6 +69,9 @@ While the project successfully demonstrates handwritten digit recognition, it's 
 The model's predictions are functional but may not be optimal in all cases. If you encounter instances of incorrect predictions, consider the following:
 
    **Image Pre-processing:** Ensure input images conform to the specified dimensions (28x28 pixels) and are in grayscale. Experiment with different pre-processing techniques, including color inversion, for potential improvements.
+
+
+--------------------------------
 
 
 
