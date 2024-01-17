@@ -6,13 +6,44 @@ MNIST ConvNet implementation, training, evaluation, and prediction.
 
 This project implements a Convolutional Neural Network (CNN) using Keras to recognize handwritten digits from the MNIST dataset. The trained model is saved and later used to make predictions on user-provided images.
 
-
+----------
 ## Project Structure
 
 - `mnist_cnn_with_dropout.py`: Contains the code to train the CNN on the MNIST dataset and save the model as 'mnist_model.h5'.
 - `loaded_mnist_model_digit_predictor.py`: Loads the trained model and makes predictions on user-provided images.
 
+-----------
+## Model Architecture
 
+- Input Layer: Accepts 28x28 grayscale images.
+- Convolutional Layers: Utilizes 32 and 64 filters of size (3, 3) with ReLU activation.
+- Max Pooling Layers: Downsamples feature maps with a pool size of (2, 2).
+- Flatten Layer: Converts 2D feature maps to a 1D vector.
+- Dense Layers: Consists of two hidden layers with 256 and 64 units, respectively, using ReLU activation.
+- Dropout Layers: 30% applied for regularization to prevent overfitting.
+- Output Layer: Has 10 units representing digits 0-9 with softmax activation.
+-----------
+## Data Preprocessing
+
+- Images are normalized to a range between 0 and 1.
+- Training data is split into training and validation sets using a 90-10 split.
+- Batch normalization is applied to improve training speed and stability.
+----------
+## Model Training
+
+- The model is trained for 10 epochs with a batch size of 128.
+- Early stopping is employed with a patience of 3 to monitor validation loss and restore the best weights.
+-------------
+## Model Evaluation
+
+- The trained model is evaluated on the test set to assess its accuracy.
+--------
+## Visualizing Results
+
+The test accuracy on 10000 samples was recorded as:
+- Test Accuracy: 0.9902999997138977 (**99.03 %**)
+
+---------
 ## Dependencies
 
 - Python 3.x
@@ -20,56 +51,20 @@ This project implements a Convolutional Neural Network (CNN) using Keras to reco
 - Matplotlib
 - NumPy
 - PIL (Python Imaging Library)
+- scikit-learn
 
 Install dependencies using:
 
 ```bash
-pip install keras matplotlib numpy pillow
+pip install keras matplotlib numpy pillow scikit-learn
 ```
-
-## Usage
-   ### Training the Model
-
-Run mnist_cnn_with_dropout.py to train the CNN on the MNIST dataset and the graph curves for loss and accuracy will be plotted. The trained model will be saved as 'mnist_model5.h5'.
-
-
-   ### Making Predictions
-
-Provide your handwritten digit image in the image_path variable in loaded_mnist_model_digit_predictor.py. Run predict_digit.py to load the trained model and make predictions on the provided image.
-
-
-## File Descriptions
-
-mnist_model5.h5: The saved Keras model file after training.
-handwritten_digit.png: Example image for making prediction of the digit in the image.
-
-
-## Visualizing Results
-
-![Screenshot from 2023-12-16 21-58-49](https://github.com/omarubaid/mnist-neural-network/assets/142675270/77a35d3d-3150-4b91-bea5-3ac29102ec0b) 
-
-------
-
-![Screenshot from 2023-12-16 21-59-06](https://github.com/omarubaid/mnist-neural-network/assets/142675270/6675e9c6-d0fd-4695-945e-caa34b8a9735)
-
-
-## Acknowledgment
-
-This project utilizes the MNIST dataset provided by the Keras datasets module for training the model.
-
+-------------
 
 ## Project Considerations
 
-While the project successfully demonstrates handwritten digit recognition, it's important to note potential area for improvement:
-
-
-   ### Model Predictions
-
-The model's predictions are functional but may not be optimal in all cases. If you encounter instances of incorrect predictions, consider the following:
-
-**Image Pre-processing:** Ensure input images conform to the specified dimensions (28x28 pixels) and are in grayscale. Experiment with different pre-processing techniques, including color inversion, for potential improvements.
-
-
+- The model achieves high accuracy on the MNIST dataset, demonstrating its effectiveness in digit recognition.
+- Employing early stopping helps prevent overfitting and ensures the model generalizes well.
+- Model predictions can be further improved with experimentation in image pre-processing techniques.
 --------------------------------
 
 
